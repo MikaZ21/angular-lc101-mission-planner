@@ -7,16 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrewComponent implements OnInit {
 
+  memberBeingEdited: object = null;
+
   crew: object[] = [
     {name: "Eileen Collins", firstMission: false},
     {name: "Mae Jemison", firstMission: false},
     {name: "Ellen Ochoa", firstMission: true}
   ];
 
-  memberBeingEdited: object = null;
 
   add(memberName: string, isFirst: boolean) {
-    this.crew.push({name: memberName, firstMission: isFirst});
+   let inCrew = false;
+   for(let i = 0; i < this.crew.length; i++) {
+     if(this.crew[i]['name'] === memberName){
+       inCrew = true;
+     }
+   }
+  if(!inCrew){
+    this.crew.push({name: memberName, firstMission: isFirst}
+      );
+   }
   }
 
   remove(member: object) {
