@@ -5,9 +5,12 @@
 h2 {
     text-align: center;
     color: brown;
+    font-family: Courier New;
 }
 
 h1 {
     text-align: center;
     text-decoration: underline;
+    font-family: Copperplate;
+    font-size: 50px;
 }

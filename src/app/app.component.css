@@ -2,4 +2,6 @@
     display: flex;
     padding: 10px;
     justify-content: space-evenly;
+    background: linear-gradient(45deg, rgb(208, 208, 249), rgb(1, 1, 45), rgb(1, 1, 45));
+    color: rgb(219, 241, 244);
 }
