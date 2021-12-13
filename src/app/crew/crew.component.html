@@ -12,5 +12,7 @@
         <li *ngFor="let astronaut of crew" (mouseover)="selected = astronaut" (mouseout)="selected = false">{{astronaut.name}}</li>
     </ol>
     <img *ngIf="selected" [src]="selected.photo"/>
+    <h4 *ngIf="selected" class="selected">Mission Count: {{selected.missionCount}}</h4>
     <!-- Add an img tag here to display astronaut photos. -->
+    <!-- [class.selected] -->
 </div>
