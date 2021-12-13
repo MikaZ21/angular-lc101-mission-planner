@@ -22,6 +22,7 @@ export class EquipmentComponent implements OnInit {
    maximumAllowedMass: number = 2000;
    maxItems: number = 10;
 
+   inCargo: boolean = false;
 
    constructor() { }
 
@@ -33,4 +34,19 @@ export class EquipmentComponent implements OnInit {
      this.cargoMass += item['mass'];
      return this.maximumAllowedMass - this.cargoMass <= 200;
    }
+
+   noMoreThanTwo (items: object) {  
+    if (this.cargoHold.includes(items)) {
+      this.inCargo = true;
+    } else {
+      this.inCargo = false;
+    }
+    
+    if (this.inCargo) {
+      let index = this.cargoHold.indexOf(items);
+      this.cargoHold.splice(index, 1);
+    } else if (!this.inCargo) {
+      this.cargoHold.push(items);
+    }
+  } 
 }

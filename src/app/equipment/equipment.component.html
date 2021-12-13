@@ -5,7 +5,7 @@
             <!-- "Add to Cargo Hold" button goes here. -->
             <button [class.active]="item.mass+cargoMass <= maximumAllowedMass &&
                 cargoHold.length < maxItems" [disabled]="item.mass+cargoMass > maximumAllowedMass || cargoHold.length >=
-                maxItems" (click)="nearCapacity = addItem(item)">
+                maxItems" (click)="nearCapacity = addItem(item)" (click)="onlyTwo = noMoreThanTwo(items)">
                 Add to Cargo Hold
             </button>
             {{item.name}}, {{item.mass}} kg
