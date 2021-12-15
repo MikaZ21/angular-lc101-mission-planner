@@ -6,8 +6,8 @@
             <button [class.active]="item.mass+cargoMass <= maximumAllowedMass &&
                 cargoHold.length < maxItems" 
                 
-                [disabled]="item.mass+cargoMass > maximumAllowedMass || cargoHold.length >=
-                maxItems" 
+                [disabled]="item.mass+cargoMass > maximumAllowedMass || 
+                cargoHold.length >= maxItems || noMoreThanTwo(item)"
                 
                 (click)="nearCapacity = addItem(item)" 
             >

@@ -17,42 +17,48 @@ export class EquipmentComponent implements OnInit {
        {name: 'Satellite', mass: 1200},
        {name: 'R2 Unit', mass: 32}
    ];
+
+   inCargo: boolean = false;
    cargoHold: object[] = [];
    cargoMass: number = 0;
    maximumAllowedMass: number = 2000;
    maxItems: number = 10;
-
-   inCargo: boolean = false;
 
    constructor() { }
 
    ngOnInit() { }
 
    // Code your addItem function here:
-   addItem(item : object) : boolean {
-    console.log("goodbye");
+   addItem(item : object) {
+    console.log("Hello!");
+    console.log(this.cargoHold);
 
-     this.cargoHold.push(item);
-     this.cargoMass += item['mass'];
-     return this.maximumAllowedMass - this.cargoMass <= 200;
-
-
+     if (this.cargoHold.includes(item)) {
+       this.inCargo = true;
+     } else {
+       this.inCargo = false;
+     }
      
-   }
+    // //  cargoHold.filter(x => x.name===item.name).length===2
+    //  if(this.cargoHold.filter(x => x['name']===item['name']).length===2) {
+    //    return false;
+    //  }
 
-   noMoreThanTwo (items: object) {  
-     console.log("hello");
-    if (this.cargoHold.includes(items)) {
-      this.inCargo = true;
+
+
+      this.cargoHold.push(item)
+      console.log("Goodbye");
+      console.log(this.cargoHold);
+
+      this.cargoMass += item['mass'] 
+      return this.maximumAllowedMass - this.cargoMass <= 200;
+   } 
+
+   noMoreThanTwo(item: object) {
+    if(this.cargoHold.filter(x => x['name']===item['name']).length===2) {
+      return true;
     } else {
-      this.inCargo = false;
+      return false;
     }
-    
-    if (this.inCargo) {
-      let index = this.cargoHold.indexOf(items);
-      this.cargoHold.splice(index, 1);
-    } else if (!this.inCargo) {
-      this.cargoHold.push(items);
-    }
-  } 
+   }
 }
